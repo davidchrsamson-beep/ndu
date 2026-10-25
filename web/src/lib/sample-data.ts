@@ -1,5 +1,5 @@
-// TEMPORARY sample data so we can build the look before the database exists.
-// Replaced by real vendors and products from Supabase in the next step.
+// TEMPORARY sample products so we can see the look before real vendors exist.
+// Categories now come from the database; these products are replaced in a later step.
 
 export type MarketProduct = {
   id: string;
@@ -10,18 +10,6 @@ export type MarketProduct = {
   location: string;
   verified: boolean;
 };
-
-export const categories = [
-  { slug: "fashion", name: "Fashion" },
-  { slug: "accessories", name: "Accessories" },
-  { slug: "beauty", name: "Beauty Products" },
-  { slug: "perfumes", name: "Perfumes" },
-  { slug: "wigs", name: "Wigs / Extensions" },
-  { slug: "bags", name: "Bags" },
-  { slug: "phone-accessories", name: "Phone Accessories" },
-  { slug: "kids-baby", name: "Kids & Baby" },
-  { slug: "home-living", name: "Home & Living" },
-];
 
 const kingof = { vendorName: "Kingof combo", vendorSlug: "kingof-combo", location: "Calabar", verified: true };
 const mamaGrace = { vendorName: "Mama Grace Couture", vendorSlug: "mama-grace-couture", location: "Calabar, Nigeria", verified: true };

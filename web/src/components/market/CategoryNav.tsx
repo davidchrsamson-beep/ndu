@@ -1,7 +1,16 @@
 import Link from "next/link";
-import { categories } from "@/lib/sample-data";
+import { createClient } from "@/lib/supabase/server";
 
-export default function CategoryNav({ active = "all" }: { active?: string }) {
+export default async function CategoryNav({ active = "all" }: { active?: string }) {
+  // Read the categories from Supabase, in the order set in the database.
+  const supabase = await createClient();
+  const { data: categories, error } = await supabase
+    .from("categories")
+    .select("slug, name")
+    .order("sort_order");
+
+      if (error) console.error("Categories query failed:", error.code, error.message);
+      
   return (
     <nav aria-label="Vendor categories" className="mx-auto max-w-5xl px-5 pb-8">
       {/* Magazine: its own page, linked directly above the categories */}
@@ -22,14 +31,20 @@ export default function CategoryNav({ active = "all" }: { active?: string }) {
         <span className="h-px flex-1 bg-gray-200" />
       </div>
 
-        <ul className="grid grid-cols-3 gap-3 sm:grid-cols-5">
+      <ul className="grid grid-cols-3 gap-3 sm:grid-cols-5">
         <li><Chip href="/" label="All" isActive={active === "all"} /></li>
-        {categories.map((c) => (
+        {(categories ?? []).map((c) => (
           <li key={c.slug}>
             <Chip href={`/category/${c.slug}`} label={c.name} isActive={active === c.slug} />
           </li>
         ))}
       </ul>
+
+      {error && (
+        <p role="alert" className="mt-3 text-center text-sm text-red-600">
+          Categories couldn&apos;t load. Please refresh the page.
+        </p>
+      )}
     </nav>
   );
 }
