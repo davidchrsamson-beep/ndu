@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
-/* Ndu's brand colours, as names we can use everywhere: bg-brand, text-ink, etc. */
+/* errand's colours: dark night background, orange accent */
 @theme {
-  --color-brand: #059669;       /* emerald green: buttons, Top Choices band, Verified */
-  --color-brand-dark: #047857;  /* green when pressed */
-  --color-brand-tint: #ecfdf5;  /* very light green boxes */
-  --color-ink: #111827;         /* near-black: headings, "Open a Store" */
+  --color-night: #0E0F12;        /* page background */
+  --color-panel: #17181C;        /* cards and input */
+  --color-line: #26272D;         /* thin borders */
+  --color-line-strong: #33343B;  /* chip borders */
+  --color-mute: #A1A1AA;         /* quiet text */
+  --color-snow: #F5F5F4;         /* main text */
+  --color-accent: #FF7A1A;       /* orange */
 }
 
-/* Fonts are loaded in layout.tsx; this connects them to Tailwind's font-sans and font-serif. */
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
 }
 
+html,
 body {
-  background: #ffffff;
-  color: var(--color-ink);
+  background: var(--color-night);
+  color: var(--color-snow);
 }

@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/* errand's colours: dark night background, orange accent */
+@theme {
+  --color-night: #0E0F12;        /* page background */
+  --color-panel: #17181C;        /* cards and input */
+  --color-line: #26272D;         /* thin borders */
+  --color-line-strong: #33343B;  /* chip borders */
+  --color-mute: #A1A1AA;         /* quiet text */
+  --color-snow: #F5F5F4;         /* main text */
+  --color-accent: #FF7A1A;       /* orange */
+}
+
+@theme inline {
+  --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--color-night);
+  color: var(--color-snow);
+}
